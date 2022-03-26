@@ -30,5 +30,5 @@ test("test email", () => {
 test("test Office number", () => {
     const johnManager = new Manager("john", "1",  "john@gmail.com", "2")
 
-    expect(johnManager.officeNumber).toBe("2")
+    expect(johnManager.getOfficeNumber()).toBe("2")
 })

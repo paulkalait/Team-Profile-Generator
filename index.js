@@ -7,13 +7,13 @@ const Intern = require('./lib/Intern')
 const Engineer = require('./lib/Engineer')
 const Manager = require('./lib/Manager')
 
-const generateHtml = require('./utils/generatehtml')
+const generateMarkdown = require('./utils/generatehtml')
 
 
 const teamStaff = []
 
-const managerQuestions = [{
-
+const managerQuestions = () =>{
+    inquirer.prompt([{
     type: "input",
     name: "id",
     message: "what is your ID Number?"
@@ -34,15 +34,20 @@ const managerQuestions = [{
     message: "what is your office number?"
 }
 ]
+)
 .then(managerAnswers => {
     const {name, id, email, officeNumber} = managerAnswers
     const manager = new Manager (name, id, email, officeNumber)
 
     teamStaff.push(manager)
+    addMoreEmployees()
 })
+}
+
 
 //questions for 
-const employeeQuestions = [{
+const employeeQuestions = () => {
+    inquirer.prompt([{
 
     type: "input",
     name: "id",
@@ -65,12 +70,17 @@ const employeeQuestions = [{
     message: "What is your email address?"
 },
 ]
+)
 .then(employeeAnswers => {
     const {name, id, email, role} = employeeAnswers
     const employee = new Employee (name, id, email, role)
 
     teamStaff.push(employee)
+   
 })
+}
+
+
 
 //questions for intern
 const internQuestions = () => {
@@ -101,9 +111,10 @@ inquirer.prompt([
 .then(internAnswers => {
     const {name, id, email, school} = internAnswers
     const intern = new Intern (name, id, email, school)
-
+    addMoreEmployees()
     teamStaff.push(intern)
 })
+}
 //questions for interns ends 
 
 //questions for engineer 
@@ -130,14 +141,16 @@ const engineerQuestions = () => {
             message: "what is your github username?"
            }
     ])
+    .then(engineerAnswers => {
+        const {name, id, email, github} = engineerAnswers
+        const engineer = new Engineer (name, id, email, github)
+        addMoreEmployees();
+        teamStaff.push(engineer)
+
+    })
+  
 }
 
-.then(engineerAnswers => {
-    const {name, id, email, github} = engineerAnswers
-    const engineer = new Engineer (name, id, email, github)
-
-    teamStaff.push(engineer)
-})
 
 
 
@@ -148,12 +161,11 @@ const addMoreEmployees = () => {
             type: "list",
             name: "options",
             message: "would you like to add more employees",
-            choices: ["Engineer", "intern", "none"]
+            choices: ["Engineer", "Intern", "none"]
         }
     ])
     .then(answers => { 
         if(answers.options == "Engineer"){
-
             engineerQuestions();
         } else if(answers.options == "Intern"){
             internQuestions()
@@ -162,6 +174,9 @@ const addMoreEmployees = () => {
         }
     
 })
+}
+managerQuestions();
+
 
 function renderFunction() {
     fs.writeFileSync("dist/generatedPage.html", generateMarkdown(teamStaff))
