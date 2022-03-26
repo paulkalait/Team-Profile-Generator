@@ -2,7 +2,15 @@
 const fs = require('fs')
 const inquirer = require('inquirer')
 
+const Employee = require('./lib/Employee')
+const Intern = require('./lib/Intern')
+const Engineer = require('./lib/Engineer')
+const Manager = require('./lib/Manager')
+
 const generateHtml = require('./utils/generatehtml')
+
+
+const teamStaff = []
 
 const managerQuestions = [{
 
@@ -55,3 +63,32 @@ const EmployeeQuestions = [{
     message: "what is your office number?"
 }
 ]
+
+
+
+
+const addMoreEmployees = () => {
+    inquirer.prompt([
+        {
+            type: "list",
+            name: "options",
+            message: "would you like to add more employees",
+            choices: ["Engineer", "intern", "none"]
+        }
+    ])
+    .then(answers => { 
+        if(answers.options == "Engineer"){
+
+            engineerQuestions();
+        } else if(answers.options == "Intern"){
+            InternQuestions()
+        }else{
+            renderFunction()
+        }
+    
+})
+
+function renderHtml() {
+    fs.writeFileSync("dist/generatedPage.html", generateMarkdown(teamStaff))
+}
+
