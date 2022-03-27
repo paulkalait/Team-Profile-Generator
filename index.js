@@ -109,6 +109,7 @@ inquirer.prompt([
 ])
 
 .then(internAnswers => {
+    //equals prompt titles
     const {name, id, email, school} = internAnswers
     const intern = new Intern (name, id, email, school)
     addMoreEmployees()
