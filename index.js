@@ -15,13 +15,13 @@ const teamStaff = []
 const managerQuestions = () =>{
     inquirer.prompt([{
     type: "input",
-    name: "id",
-    message: "what is your ID Number?"
+    name: "name",
+    message: "what is your name?"
 },
 {
     type: "input",
-    name: "name",
-    message: "what is your name?"
+    name: "id",
+    message: "what is your ID Number?"
 },
 {
     type:"input",
@@ -180,5 +180,5 @@ managerQuestions();
 
 function renderFunction() {
     fs.writeFileSync("dist/generatedPage.html", generateMarkdown(teamStaff))
-}
+};
 
