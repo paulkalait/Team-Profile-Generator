@@ -6,7 +6,7 @@ https://www.youtube.com/watch?v=0Pd0akiuJKI
 ## Purpose: 
 This assignment was to create a generated web page that the user can create with the help of node, jest, and the inquirer module. The webpage displays cards for employee staffs (that are dynamically generated based off the user's input).
 
-    ![Screenshot](img/finalshowcase.png)
+![Screenshot](img/finalshowcase.png)
 
 ## Steps: 
 1. I had to gain access to jest by installing it to the root directory of my repo, and installed the fs and inquirer using the require method. 
