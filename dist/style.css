@@ -1,0 +1,9 @@
+header{
+    border-bottom: solid 5px darkgray;
+    font-family: 'Roboto Slab', serif;
+}
+
+h5, h6, p{
+    border-bottom: 	#DCDCDC solid 1px;
+}
+

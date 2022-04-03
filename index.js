@@ -16,7 +16,7 @@ const managerQuestions = () =>{
     inquirer.prompt([{
     type: "input",
     name: "name",
-    message: "what is your name?"
+    message: "what is the manager's name?"
 },
 {
     type: "input",
