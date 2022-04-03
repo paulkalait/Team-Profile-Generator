@@ -1,7 +1,7 @@
 # Team-Profile-Generator
 
 ## Link to video:
-https://www.youtube.com/watch?v=1hCZkjweDhA
+https://drive.google.com/file/d/1J0W3rdC3cOAzG1pc7LqgaKQfC-uARMzD/view
 
 ## Purpose: 
 This assignment was to create a generated web page that the user can create with the help of node, jest, and the inquirer module. The webpage displays cards for employee staffs (that are dynamically generated based off the user's input).
